@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #counter {
+      color: white;
+      background-color: orchid;
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 5px;
+    }
+    #sideNave {
+      width: 300px;
+      height: 100%;
+      background-color: lightgreen;
+      position: fixed;
+      right: 0;
+      top: 0;
+      display: none;
+      transition: 1s;
+    }
+    ul li {
+      list-style: none;
+      font-size: 20px;
+      margin: 20px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 20px;
+      transition: 0.5s;
+    }
+    li:hover {
+      background-color: rgb(182, 235, 182);
+    }
+  </style>
+  <body>
+    <div><button onclick="showAlert()">showAlert</button></div>
+    <div
+      style="
+        margin-top: 20px;
+        text-align: center;
+        width: 50%;
+        background-color: lightblue;
+        padding: 10px;
+        border-radius: 10px;
+      "
+    >
+      <button onclick="minusHandler()">minus</button>
+      <span id="counter">0</span>
+      <button onclick="plusHandler()">plus</button>
+      <div style="margin-top: 10px; margin-left: 15px">
+        <button onclick="reset()">reset</button>
+      </div>
+    </div>
+    <br /><br />
+    <div><button onclick="showSideNave()">show sidenav</button></div>
+
+    <section id="sideNave">
+      <div><button onclick="hideSideNave()">X</button></div>
+      <ul>
+        <li>home</li>
+        <li>about us</li>
+        <li>log in</li>
+        <li>call me</li>
+      </ul>
+    </section>
+
+    <script>
+      let showAlert = () => {
+        alert("practice 6");
+      };
+
+      //********
+      let updateElement = function () {
+        let countElement = document.getElementById("counter");
+        if (count < 0) {
+          document.getElementById("counter").style.backgroundColor = "red";
+        } else if (count >= 0 && count <= 10) {
+          document.getElementById("counter").style.backgroundColor = "blue";
+        } else {
+          document.getElementById("counter").style.backgroundColor = "green";
+        }
+        countElement.innerText = count;
+      };
+      let count = 0;
+      let plusHandler = function () {
+        count++;
+        updateElement();
+      };
+      function minusHandler() {
+        count--;
+        updateElement();
+      }
+      let reset = () => {
+        count = 0;
+        document.getElementById("counter").style.backgroundColor = "orchid";
+
+        document.getElementById("counter").innerText = count;
+      };
+
+      function showSideNave() {
+        document.getElementById("sideNave").style.display = "block";
+      }
+      function hideSideNave() {
+        document.getElementById("sideNave").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
